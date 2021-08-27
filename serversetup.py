@@ -13,6 +13,10 @@ class RequestHandler(BaseHTTPRequestHandler):
 			celebrant_number = fields.get('celebrant-number')
 			sendMessage(sender_name[0],celebrant_name[0],celebrant_number[0])
 
+		self.send_response(301)
+		self.send_header('Location','http://localhost:8000')
+		self.end_headers()
+
 def main():
 	PORT = 8006
 	server = HTTPServer(('',PORT), RequestHandler)
