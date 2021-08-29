@@ -14,7 +14,7 @@ class RequestHandler(BaseHTTPRequestHandler):
 			sendMessage(sender_name[0],celebrant_name[0],celebrant_number[0])
 
 		self.send_response(301)
-		self.send_header('Location','http://localhost:8000')
+		self.send_header('Location','https://akshada4.github.io/say_happy_birthday')
 		self.end_headers()
 
 def main():
