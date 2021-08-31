@@ -1,5 +1,6 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import cgi
+import os
 from twilioAPI import sendMessage
 
 class RequestHandler(BaseHTTPRequestHandler):
@@ -18,8 +19,15 @@ class RequestHandler(BaseHTTPRequestHandler):
 		self.end_headers()
 
 def main():
-	PORT = 8006
-	server = HTTPServer(('',PORT), RequestHandler)
+	PORT = os.getenv("PORT")
+	if PORT is None:
+	  PORT = 8000
+	  HOST = "127.0.0.1"
+	else:
+	  HOST = "0.0.0.0"
+	  PORT = int(PORT)
+	
+	server = HTTPServer((HOST,PORT), RequestHandler)
 	server.serve_forever()
 
 if __name__ == '__main__':
