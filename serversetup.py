@@ -15,7 +15,7 @@ class RequestHandler(BaseHTTPRequestHandler):
 			sendMessage(sender_name[0],celebrant_name[0],celebrant_number[0])
 
 		self.send_response(301)
-		self.send_header('Location','localhost:8000')
+		self.send_header('Location','')
 		self.end_headers()
 
 def main():
@@ -26,7 +26,7 @@ def main():
 	else:
 	  HOST = "0.0.0.0"
 	  PORT = int(PORT)
-	
+
 	server = HTTPServer((HOST,PORT), RequestHandler)
 	server.serve_forever()
 
